@@ -1,0 +1,46 @@
+# Docker Commands
+
+## Docker commands used to build the application
+
+```docker build -t techtrends .```
+
+## Docker commands used to run the application
+
+```docker run -d -p 7111:3111 techtrends```
+
+## Docker commands used to get the application logs
+
+```docker logs 720d54385367524e28956f616b4de4b560c36594017b5939998885281d31d786```
+
+## Logs from the container running the TechTrends application
+
+```text
+* Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+WARNING - [25/09/2022 23:44:12]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO - [25/09/2022 23:44:12]  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+INFO - [25/09/2022 23:44:19] 172.17.0.1 - - [25/Sep/2022 23:44:19] "GET / HTTP/1.1" 200 -
+INFO - [25/09/2022 23:44:19] 172.17.0.1 - - [25/Sep/2022 23:44:19] "GET /static/css/main.css HTTP/1.1" 200 -
+INFO - [25/09/2022 23:44:20] 172.17.0.1 - - [25/Sep/2022 23:44:20] "GET /favicon.ico HTTP/1.1" 404 -
+INFO - [25/09/2022 23:44:21] Article 2020 CNCF Annual Report retrieved!
+INFO - [25/09/2022 23:44:21] 172.17.0.1 - - [25/Sep/2022 23:44:21] "GET /1 HTTP/1.1" 200 -
+INFO - [25/09/2022 23:44:21] 172.17.0.1 - - [25/Sep/2022 23:44:21] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO - [25/09/2022 23:44:22] 'About Us' page is retrieved
+INFO - [25/09/2022 23:44:22] 172.17.0.1 - - [25/Sep/2022 23:44:22] "GET /about HTTP/1.1" 200 -
+INFO - [25/09/2022 23:44:22] 172.17.0.1 - - [25/Sep/2022 23:44:22] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO - [25/09/2022 23:45:39] 172.17.0.1 - - [25/Sep/2022 23:45:39] "GET /healthz HTTP/1.1" 200 -
+INFO - [25/09/2022 23:45:47] 172.17.0.1 - - [25/Sep/2022 23:45:47] "GET /metrics HTTP/1.1" 200 -
+INFO - [25/09/2022 23:50:24] 172.17.0.1 - - [25/Sep/2022 23:50:24] "GET /create HTTP/1.1" 200 -
+INFO - [25/09/2022 23:50:24] 172.17.0.1 - - [25/Sep/2022 23:50:24] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO - [25/09/2022 23:50:40] post with title: Hello World! is created!
+INFO - [25/09/2022 23:50:40] 172.17.0.1 - - [25/Sep/2022 23:50:40] "POST /create HTTP/1.1" 302 -
+INFO - [25/09/2022 23:50:40] 172.17.0.1 - - [25/Sep/2022 23:50:40] "GET / HTTP/1.1" 200 -
+INFO - [25/09/2022 23:50:41] 172.17.0.1 - - [25/Sep/2022 23:50:41] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO - [25/09/2022 23:50:45] Article Hello World! retrieved!
+INFO - [25/09/2022 23:50:45] 172.17.0.1 - - [25/Sep/2022 23:50:45] "GET /8 HTTP/1.1" 200 -
+INFO - [25/09/2022 23:50:45] 172.17.0.1 - - [25/Sep/2022 23:50:45] "GET /static/css/main.css HTTP/1.1" 304 -
+```
