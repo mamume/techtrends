@@ -1,19 +1,8 @@
 import logging
 import sqlite3
 import sys
-from datetime import datetime
 
-from flask import (
-    Flask,
-    flash,
-    json,
-    jsonify,
-    redirect,
-    render_template,
-    request,
-    url_for,
-)
-from werkzeug.exceptions import abort
+from flask import Flask, flash, json, redirect, render_template, request, url_for
 
 db_connection_count = 0
 
