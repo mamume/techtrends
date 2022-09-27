@@ -122,7 +122,6 @@ def metrics():
 if __name__ == "__main__":
     logging.basicConfig(
         level=logging.DEBUG,
-        stream=sys.stdout,
         format='%(levelname)s - [%(asctime)s] %(message)s',
         datefmt='%d/%m/%Y %H:%M:%S'
     )
