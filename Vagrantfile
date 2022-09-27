@@ -1,32 +1,32 @@
-# set up the default terminal
-ENV["TERM"]="linux"
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
 
-# set minimum version for Vagrant
-Vagrant.require_version ">= 2.2.10"
 Vagrant.configure("2") do |config|
-  config.vm.provision "shell",
-    inline: "sudo su - && zypper update && zypper install -y apparmor-parser"
 
-  # Set the image for the vagrant box
+  # Use opensuse machine image
   config.vm.box = "opensuse/Leap-15.2.x86_64"
-  # Set the image version
-  config.vm.box_version = "15.2.31.632"
+  config.vm.box_version = "15.2.31.584"
 
-  # Forward the ports from the guest VM to the local host machine
-  # Forward more ports, as needed
-  config.vm.network "forwarded_port", guest: 8080, host: 8080
-  config.vm.network "forwarded_port", guest: 6111, host: 6111
-  config.vm.network "forwarded_port", guest: 6112, host: 6112
+  # Kubernetes API Access
+  config.vm.network "forwarded_port", guest: 6443, host: 6443
 
-  # Set the static IP for the vagrant box
-  config.vm.network "private_network", ip: "192.168.56.4"
+  # Expose NodePort ports
+  for p in 30000..30100
+    config.vm.network "forwarded_port", guest: p, host: p, protocol: "tcp"
+    end
 
-  # Configure the parameters for VirtualBox provider
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  config.vm.network "private_network", ip: "192.168.56.10"
+
+  # Define the resources for the virtualbox
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = "4096"
-    vb.cpus = 4
-    vb.customize ["modifyvm", :id, "--ioapic", "on"]
+    vb.cpus = 1
+    vb.memory = "2048"
+    vb.name = "medium-vagrant-k3s"
   end
 
-  config.ssh.insert_key=false
+  # Run some setup script to install K3s on he VM
+  config.vm.provision "k3s shell script", type: "shell",
+      path: "k3s.sh"
 end
