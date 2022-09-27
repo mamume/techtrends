@@ -24,7 +24,7 @@ spec:
         tag: latest
     spec:
       containers:
-        - image: mamume/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+        - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: techtrends
           ports:
