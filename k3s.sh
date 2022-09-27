@@ -1,3 +1,4 @@
+# Source: https://github.com/mr-pascal/medium-vagrant-k3s
 #!/bin/bash
 
 echo "**** Begin installing k3s"
